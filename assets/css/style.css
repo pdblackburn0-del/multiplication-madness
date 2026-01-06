@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap');
 
 /*Global Styles*/
-/* CSS HEX */
+
 
 html,
 body {
@@ -14,6 +14,7 @@ body {
 
 :root {
 
+    --font-primary: 'Playpen Sans', sans-serif;
     --key-lime-pie: #b8d630;
     --color-tertiary: #f9d830;
     --sail: #aadef8;
@@ -147,4 +148,20 @@ button {
     button {
         font-size: 40px;
     }
+}
+
+/*Calc section styling*/
+#game {
+    font-family: var(--font-primary);
+    color: var(--color-primary);
+}
+#game button {
+    font-family: var(--font-primary);
+    color: var(--color-primary);
+    background-color: yellow;
+    border-radius: 999px;
+}
+#game button:hover {
+    background-color: lightyellow);
+    font-size: 85px;
 }

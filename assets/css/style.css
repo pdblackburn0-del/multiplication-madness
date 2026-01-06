@@ -4,7 +4,8 @@
 /*Global Styles*/
 /* CSS HEX */
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -13,32 +14,34 @@ html, body {
 
 :root {
 
---key-lime-pie: #b8d630;
---color-tertiary: #f9d830;
---sail: #aadef8;
---punch: #da4529;
---fern-green: #447f3b;
---sprout: #b1cc9b;
---color-secondary: #a355c0;
---color-primary: #330a4c;
---color-grass: #5BA134;
+    --key-lime-pie: #b8d630;
+    --color-tertiary: #f9d830;
+    --sail: #aadef8;
+    --punch: #da4529;
+    --fern-green: #447f3b;
+    --sprout: #b1cc9b;
+    --color-secondary: #a355c0;
+    --color-primary: #330a4c;
+    --color-grass: #5BA134;
 }
 
 /*Font Family for Headings*/
-body h1,h2{
+body h1,
+h2 {
     font-family: 'Playpen Sans', sans-serif;
-   
+
 }
+
 /*heading styles*/
 .page-title {
     color: var(--color-primary);
     text-align: center;
 }
+
 .page-sub-title {
     color: var(--color-secondary);
     text-align: center;
 }
-
 
 
 /*background image for desktop*/
@@ -47,6 +50,25 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-color: var(--color-grass);
+}
+
+
+/* styling for the maths questions */
+.question-section {
+    text-align: center;
+    font-family: 'Playpen Sans', sans-serif;
+}
+
+/* Styling for the central calculator */
+.cal-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styling for the score */
+.score-section {
+    text-align: center;
 }
 
 

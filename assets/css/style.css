@@ -123,6 +123,16 @@ body {
     flex: 0 0 auto;
 }
 
+/* Button sizing */
+
+button {
+    font-size: 80px;
+}
+
+.calc-functions-row button {
+    font-size: 40px;
+}
+
 /*background image for tablets and mobiles*/
 @media (max-width: 992px) {
     body {
@@ -130,5 +140,9 @@ body {
         background-size: cover;
         background-repeat: no-repeat;
         height: 100%;
+    }
+
+    button {
+        font-size: 40px;
     }
 }

@@ -72,6 +72,57 @@ body {
 }
 
 
+/* Button Styling */
+.top-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-row button {
+    flex: 0 0 auto;
+}
+
+.middle-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.middle-row button {
+    flex: 0 0 auto;
+}
+
+.bottom-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom-row button {
+    flex: 0 0 auto;
+}
+
+.zero-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.zero-row button {
+    flex: 0 0 auto;
+}
+
+.calc-functions-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calc-functions-row button {
+    flex: 0 0 auto;
+}
+
 /*background image for tablets and mobiles*/
 @media (max-width: 992px) {
     body {

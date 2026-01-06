@@ -1,12 +1,41 @@
+/*Google Fonts Import*/
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap');
+
+/*Global Styles*/
+/* CSS HEX */
+:root {
+
+--key-lime-pie: #b8d630;
+--bright-sun: #f9d830;
+--sail: #aadef8;
+--punch: #da4529;
+--fern-green: #447f3b;
+--sprout: #b1cc9b;
+--color-primary: #a355c0;
+--buttercup: #f49a0c;
+--sushi: #74ab30;
+}
+
+/*header*/
+body h1,h2{
+    font-family: 'Playpen Sans', sans-serif;
+    color: var(--color-primary)
+   
+
+}
+
+
+/*background image for desktop*/
 body {
     background-image: url(../images/maths-background\ .webp);
     background-size: cover;
     background-repeat: no-repeat; 
 }
+/*background image for tablets and mobiles*/
 @media (max-width: 992px) {
     body {
         background-image: url(../images/mobile-background.png);
         background-size: cover;
         background-repeat: no-repeat;
     }
-    
+}

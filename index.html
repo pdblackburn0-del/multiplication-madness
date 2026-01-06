@@ -31,6 +31,18 @@
         <h3>Here is a sample maths question</h3>
     </div>
 
+    <!--input section-->
+  <div class="input-section">
+    <input 
+        type="text"
+        id="answerInput"
+        class="answer-box"
+        placeholder="Your answer"
+        readonly
+    >
+</div>
+       
+
     <section class="calc-section">
         <div class="game-container">
             <div id="game">
@@ -44,31 +56,31 @@
 
                 <div class="calculator">
                     <div class="top-row">
-                        <button class="number" onclick="addNumber(7)">7</button>
-                        <button class="number" onclick="addNumber(8)">8</button>
-                        <button class="number" onclick="addNumber(9)">9</button>
+                        <button type="button" class="number" onclick="addNumber(7)">7</button>
+                        <button type="button" class="number" onclick="addNumber(8)">8</button>
+                        <button type="button" class="number" onclick="addNumber(9)">9</button>
 
                     </div>
 
                     <div class="middle-row">
-                        <button class="number" onclick="addNumber(4)">4</button>
-                        <button class="number" onclick="addNumber(5)">5</button>
-                        <button class="number" onclick="addNumber(6)">6</button>
+                        <button type="button" class="number" onclick="addNumber(4)">4</button>
+                        <button type="button" class="number" onclick="addNumber(5)">5</button>
+                        <button type="button" class="number" onclick="addNumber(6)">6</button>
                     </div>
 
                     <div class="bottom-row">
-                        <button class="number" onclick="addNumber(1)">1</button>
-                        <button class="number" onclick="addNumber(2)">2</button>
-                        <button class="number" onclick="addNumber(3)">3</button>
+                        <button type="button" class="number" onclick="addNumber(1)">1</button>
+                        <button type="button" class="number" onclick="addNumber(2)">2</button>
+                        <button type="button" class="number" onclick="addNumber(3)">3</button>
                     </div>
 
                     <div class="zero-row">
-                        <button class="number" onclick="addNumber(0)">0</button>
+                        <button type="button" class="number" onclick="addNumber(0)">0</button>
                     </div>
 
                     <div class="calc-functions-row">
-                        <button class="clear" onclick="clearInput()">Delete</button>
-                        <button class="submit" onclick="submitAnswer()">Enter</button>
+                        <button type="button" class="clear" onclick="clearInput()">Delete</button>
+                        <button type="button" class="submit" onclick="submitAnswer()">Enter</button>
                     </div>
                 </div>
             </div>
@@ -76,7 +88,7 @@
             <div id="result" class="hidden">
                 <h2>Game Over </h2>
                 <p>Your Score: <span id="finalScore"></span>/25</p>
-                <button onclick="startGame()">Play Again</button>
+                <button type="button" onclick="startGame()">Play Again</button>
             </div>
         </div>
 

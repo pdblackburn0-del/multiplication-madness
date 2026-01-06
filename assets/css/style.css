@@ -1,0 +1,12 @@
+body {
+    background-image: url(../images/maths-background\ .webp);
+    background-size: cover;
+    background-repeat: no-repeat; 
+}
+@media (max-width: 992px) {
+    body {
+        background-image: url(../images/mobile-background.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    

@@ -3,6 +3,13 @@
 
 /*Global Styles*/
 /* CSS HEX */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%
+}
+
 :root {
 
 --key-lime-pie: #b8d630;

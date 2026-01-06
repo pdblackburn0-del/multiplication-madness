@@ -34,7 +34,7 @@ function nextQuestion() {
     userInput = "";
     updateDisplay();
 
-    timer = 7;
+    timer = 10;
     document.getElementById("timer").textContent = timer;
 
     const q = questions[currentQuestion];

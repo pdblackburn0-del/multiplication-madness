@@ -129,13 +129,13 @@ body {
 /* Button sizing */
 
 button {
-    font-size: 60px;
-    padding: 20px;
+    font-size: 40px;
+    padding: 10px;
     
 }
 #game button {
-    height: 140px;
-    width: 140px;
+    height: 80px;
+    width: 80px;
 }
 
 .calc-functions-row button {
@@ -169,7 +169,7 @@ button {
 }
 #game button:hover {
     background-color: yellowgreen;
-    font-size: 65px;
+    font-size: 45px;
     cursor: pointer;
     color: var(--color-secondary);
 }

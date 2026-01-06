@@ -139,7 +139,33 @@ button {
 }
 
 .calc-functions-row button {
-    font-size: 30px;
+    font-size: 22px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.play-again-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.play-again-row button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.play-again-label {
+    font-family: var(--font-primary);
+    color: var(--color-primary);
+    font-size: 28px;
 }
 
 /*background image for tablets and mobiles*/
@@ -169,7 +195,6 @@ button {
 }
 #game button:hover {
     background-color: yellowgreen;
-    font-size: 45px;
     cursor: pointer;
     color: var(--color-secondary);
 }

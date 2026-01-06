@@ -1,9 +1,7 @@
 let questions = [];
 let currentQuestion = 0;
 let correctAnswers = 0;
-let timer = 7;
-let timerInterval;
-let userInput = "";
+
 
 function generateQuestions() {
     questions = [];
@@ -30,7 +28,7 @@ function nextQuestion() {
         return;
     }
 
-    userInput = "";
+      userInput = "";
     updateDisplay();
 
     timer = 7;
@@ -40,18 +38,7 @@ function nextQuestion() {
     document.getElementById("question").textContent =
         `${q.a} × ${q.b} = ?`;
 
-    clearInterval(timerInterval);
-    timerInterval = setInterval(() => {
-        timer--;
-        document.getElementById("timer").textContent = timer;
-        if (timer === 0) {
-            clearInterval(timerInterval);
-            currentQuestion++;
-            nextQuestion();
-        }
-    }, 1000);
-}
-
+        
 function addNumber(num) {
     userInput += num;
     updateDisplay();

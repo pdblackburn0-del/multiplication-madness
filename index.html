@@ -1,15 +1,79 @@
-<!DOCTYPE html>     
-<html lang="en">    
-<head>             
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multiplication Maddess</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
     <h1 class="page-title">Multiplication Maddess</h1>
     <h2 class="page-sub-title">Try out our multiplication quiz.
-    test your skills and have fun!
+        test your skills and have fun!
     </h2>
+
+    <!--Questions-->
+    <div class="question-section">
+        <h3>Here is a sample maths question</h3>
+    </div>
+
+    <section class="cal-section">
+        <div class="game-container">
+            <div id="game">
+                <div class="question" id="question"></div>
+                <div class="display" id="display"></div>
+
+                <div class="info">
+                    <div>⏱ <span id="timer">7</span>s</div>
+                    <div>✔ <span id="score">0</span>/25</div>
+                </div>
+
+                <div class="calculator">
+                    <div class="top-row">
+                        <button class="number" onclick="addNumber(7)">7</button>
+                        <button class="number" onclick="addNumber(8)">8</button>
+                        <button class="number" onclick="addNumber(9)">9</button>
+
+                    </div>
+
+                    <div class="middle-row">
+                        <button class="number" onclick="addNumber(4)">4</button>
+                        <button class="number" onclick="addNumber(5)">5</button>
+                        <button class="number" onclick="addNumber(6)">6</button>
+                    </div>
+
+                    <div class="bottom-row">
+                        <button class="number" onclick="addNumber(1)">1</button>
+                        <button class="number" onclick="addNumber(2)">2</button>
+                        <button class="number" onclick="addNumber(3)">3</button>
+                    </div>
+
+                    <div class="zero-row">
+                        <button class="number" onclick="addNumber(0)">0</button>
+                    </div>
+
+                    <div class="calc-functions-row">
+                        <button class="clear" onclick="clearInput()">Delete</button>
+                        <button class="submit" onclick="submitAnswer()">Enter</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="result" class="hidden">
+                <h2>Game Over </h2>
+                <p>Your Score: <span id="finalScore"></span>/25</p>
+                <button onclick="startGame()">Play Again</button>
+            </div>
+        </div>
+
+    </section>
+
+    <!--Score-->
+    <div class="score-section">
+        <h3>Score section</h3>
+    </div>
+</body>
 
 </html>

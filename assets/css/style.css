@@ -6,23 +6,31 @@
 :root {
 
 --key-lime-pie: #b8d630;
---bright-sun: #f9d830;
+--color-secondary: #f9d830;
 --sail: #aadef8;
 --punch: #da4529;
 --fern-green: #447f3b;
 --sprout: #b1cc9b;
---color-primary: #a355c0;
---buttercup: #f49a0c;
+--color-secondary: #a355c0;
+--color-primary: #330a4c;
 --sushi: #74ab30;
 }
 
-/*header*/
+/*Font Family for Headings*/
 body h1,h2{
     font-family: 'Playpen Sans', sans-serif;
-    color: var(--color-primary)
    
-
 }
+/*heading styles*/
+.page-title {
+    color: var(--color-primary);
+    text-align: center;
+}
+.page-sub-title {
+    color: var(--color-secondary);
+    text-align: center;
+}
+
 
 
 /*background image for desktop*/

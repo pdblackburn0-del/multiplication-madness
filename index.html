@@ -16,25 +16,47 @@
 
     <!--Questions-->
     <div class="question-section">
-        <h3 >Here is a sample maths question</h3>
+        <h3>Here is a sample maths question</h3>
     </div>
 
     <section class="cal-section">
-        <div class="calculator">
-            <img src="assets/images/calculator.png" alt="image of calculator" class="calc-img">
-            <div class="1"><span>1</span></div>
-            <div class="2"><span>2</span></div>
-            <div class="3"><span>3</span></div>
-            <div class="4"><span>4</span></div>
-            <div class="5"><span>5</span></div>
-            <div class="6"><span>6</span></div>
-            <div class="7"><span>7</span></div>
-            <div class="8"><span>1</span></div>
-            <div class="9"><span>1</span></div>
-            <div class="10"><span>1</span></div>
-            <div class="delete"></div>
-            <div class="enter"></div>
+        <div class="game-container">
+            <div id="game">
+                <div class="question" id="question"></div>
+                <div class="display" id="display"></div>
+
+                <div class="info">
+                    <div>⏱ <span id="timer">7</span>s</div>
+                    <div>✔ <span id="score">0</span>/25</div>
+                </div>
+
+                <div class="calculator">
+                    <button class="number" onclick="addNumber(7)">7</button>
+                    <button class="number" onclick="addNumber(8)">8</button>
+                    <button class="number" onclick="addNumber(9)">9</button>
+                    <button class="clear" onclick="clearInput()">C</button>
+
+                    <button class="number" onclick="addNumber(4)">4</button>
+                    <button class="number" onclick="addNumber(5)">5</button>
+                    <button class="number" onclick="addNumber(6)">6</button>
+                    <button class="action" onclick="submitAnswer()">=</button>
+
+                    <button class="number" onclick="addNumber(1)">1</button>
+                    <button class="number" onclick="addNumber(2)">2</button>
+                    <button class="number" onclick="addNumber(3)">3</button>
+                    <button class="number" onclick="addNumber(0)">0</button>
+
+                    <button class="submit" onclick="submitAnswer()">Submit</button>
+                </div>
+            </div>
+
+            <div id="result" class="hidden">
+                <h2>Game Over </h2>
+                <p>Your Score: <span id="finalScore"></span>/25</p>
+                <button onclick="startGame()">Play Again</button>
+            </div>
         </div>
+
     </section>
 
     <!--Score-->
@@ -42,4 +64,5 @@
         <h3>Score section</h3>
     </div>
 </body>
+
 </html>

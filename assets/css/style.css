@@ -127,6 +127,8 @@ body {
 
 button {
     font-size: 80px;
+    padding: 20px;
+    
 }
 
 .calc-functions-row button {

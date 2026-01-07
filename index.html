@@ -30,31 +30,30 @@
 
        
 
-    <section class="calc-section">
-        <div class="game-container">
-            <div id="game" class="hidden">
-                <div class="question" id="question"></div>
-                <div class="display" id="display"></div>
+  
 
                 <div class="info">
                     <span>⏱ <span id="timer">10</span>s</span>
                     <span class="play-again-row">
                     <button type="button" id="playPauseBtn" onclick="togglePlayPause()">▶</button>
                     <span class="play-again-label" id="playPauseLabel">Play</span>
+                    <span><button id="muteBtn" class="mute-btn" onclick="toggleMute()">🔊</button>
+</span>
                 </span>
                     <span>✔ <span id="score">0</span>/25</span>
                 </div>
 
                 
     <!--input section-->
-  <div class="input-section">
-    <input 
-        type="text"
-        id="answerInput"
-        class="answer-box"
-        placeholder="Your answer"
-        readonly
-    >
+ <div class="input-section">
+    <div class="answer-box">
+        <div id="equation" class="equation">× =</div>
+    </div>
+</div>
+        <div class="game-container">
+            <div id="game" class="hidden">
+                
+                
 
                 <div class="calculator">
                     <div class="top-row">

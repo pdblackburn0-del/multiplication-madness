@@ -198,15 +198,62 @@ button {
     background-color: lightgray;
 }
 
+@keyframes currentBox {
+    from {background-color: white;}
+    to {background-color: red}
+}
+
 /* Current question */
 .progress-box.current {
     background-color: white;
     border: 2px red;
+    animation-name: currentBox;
+    animation-duration: 10s;
+}
+
+@keyframes fireworks {
+    0% {
+        opacity: 1;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
 }
 
 /* Correct / incorrect states */
 .progress-box.correct {
     background-color: green;
+    animation: correctPop 0.4s ease-out forwards;
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Firework generator */
+.progress-box.correct::before,
+.progress-box.correct::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    background:
+        radial-gradient(circle, yellow 20%, transparent 20%),
+        radial-gradient(circle, orange 20%, transparent 20%),
+        radial-gradient(circle, red 20%, transparent 20%),
+        radial-gradient(circle, white 20%, transparent 20%);
+    background-size: 6px 6px;
+    background-position:
+        0 0,
+        100% 0,
+        0 100%,
+        100% 100%;
+    transform: translate(-50%, -50%);
+    animation: fireworks 0.6s ease-out forwards;
+    pointer-events: none;
 }
 
 .progress-box.wrong {

@@ -162,6 +162,19 @@ button {
     line-height: 1;
 }
 
+.pause-button-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.pause-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
 .play-again-label {
     font-family: var(--font-primary);
     color: var(--color-primary);

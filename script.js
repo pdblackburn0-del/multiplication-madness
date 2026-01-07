@@ -4,6 +4,7 @@ let correctAnswers = 0;
 let timer = 7;
 let timerInterval;
 let userInput = "";
+let isPaused = false;
 
 
 function generateQuestions() {
@@ -19,9 +20,20 @@ function startGame() {
     generateQuestions();
     currentQuestion = 0;
     correctAnswers = 0;
+    isPaused = false;
     document.getElementById("score").textContent = 0;
     document.getElementById("game").classList.remove("hidden");
     document.getElementById("result").classList.add("hidden");
+    
+    const playPauseBtn = document.getElementById("playPauseBtn");
+    const playPauseLabel = document.getElementById("playPauseLabel");
+    if (playPauseBtn) {
+        playPauseBtn.textContent = '⏸';
+    }
+    if (playPauseLabel) {
+        playPauseLabel.textContent = 'Pause';
+    }
+    
     nextQuestion();
 }
 
@@ -54,11 +66,13 @@ function nextQuestion() {
 
 
 function addNumber(num) {
+    if (isPaused) return;
     userInput += num;
     updateDisplay();
 }
 
 function clearInput() {
+    if (isPaused) return;
     userInput = "";
     updateDisplay();
 }
@@ -68,6 +82,7 @@ function updateDisplay() {
 }
 
 function submitAnswer() {
+    if (isPaused) return;
     clearInterval(timerInterval);
 
     const q = questions[currentQuestion];
@@ -81,9 +96,57 @@ function submitAnswer() {
 }
 
 function endGame() {
+    clearInterval(timerInterval);
+    isPaused = false;
     document.getElementById("game").classList.add("hidden");
     document.getElementById("result").classList.remove("hidden");
     document.getElementById("finalScore").textContent = correctAnswers;
+    
+    const playPauseBtn = document.getElementById("playPauseBtn");
+    const playPauseLabel = document.getElementById("playPauseLabel");
+    if (playPauseBtn) {
+        playPauseBtn.textContent = '▶';
+    }
+    if (playPauseLabel) {
+        playPauseLabel.textContent = 'Play';
+    }
 }
 
-startGame();
+function toggleCalculatorButtons(disabled) {
+    const buttons = document.querySelectorAll('.calculator button');
+    buttons.forEach(button => {
+        button.disabled = disabled;
+        button.style.opacity = disabled ? '0.5' : '1';
+        button.style.cursor = disabled ? 'not-allowed' : 'pointer';
+    });
+}
+
+function togglePlayPause() {
+    if (document.getElementById("game").classList.contains("hidden")) {
+        // Game not started yet, start it
+        startGame();
+        toggleCalculatorButtons(false);
+    } else if (isPaused) {
+        // Resume game
+        isPaused = false;
+        toggleCalculatorButtons(false);
+        timerInterval = setInterval(() => {
+            timer--;
+            document.getElementById("timer").textContent = timer;
+            if (timer === 0) {
+                clearInterval(timerInterval);
+                currentQuestion++;
+                nextQuestion();
+            }
+        }, 1000);
+        document.getElementById("playPauseBtn").textContent = '⏸';
+        document.getElementById("playPauseLabel").textContent = 'Pause';
+    } else {
+        // Pause game
+        isPaused = true;
+        toggleCalculatorButtons(true);
+        clearInterval(timerInterval);
+        document.getElementById("playPauseBtn").textContent = '▶';
+        document.getElementById("playPauseLabel").textContent = 'Play';
+    }
+}

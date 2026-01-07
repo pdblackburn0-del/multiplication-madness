@@ -31,7 +31,7 @@
 
     <section class="calc-section">
         <div class="game-container">
-            <div id="game">
+            <div id="game" class="hidden">
                 <div class="question" id="question"></div>
                 <div class="display" id="display"></div>
 
@@ -83,12 +83,12 @@
                 </div>
             </div>
 
-            <div id="result" class="hidden">
+            <div id="result">
                 <h2>Game Over </h2>
                 <p>Your Score: <span id="finalScore"></span>/25</p>
                 <div class="play-again-row">
-                    <button type="button" onclick="startGame()">▶</button>
-                    <span class="play-again-label">Play Again</span>
+                    <button type="button" id="playPauseBtn" onclick="togglePlayPause()">▶</button>
+                    <span class="play-again-label" id="playPauseLabel">Play</span>
                 </div>
             </div>
         </div>

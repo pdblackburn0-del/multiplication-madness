@@ -27,6 +27,7 @@
     <!--input section-->
 
 </div>
+
        
 
     <section class="calc-section">
@@ -37,7 +38,10 @@
 
                 <div class="info">
                     <span>⏱ <span id="timer">10</span>s</span>
-                    <span id="spacing">---------</span>
+                    <span class="play-again-row">
+                    <button type="button" id="playPauseBtn" onclick="togglePlayPause()">▶</button>
+                    <span class="play-again-label" id="playPauseLabel">Play</span>
+                </span>
                     <span>✔ <span id="score">0</span>/25</span>
                 </div>
 
@@ -86,10 +90,7 @@
             <div id="result">
                 <h2>Game Over </h2>
                 <p>Your Score: <span id="finalScore"></span>/25</p>
-                <div class="play-again-row">
-                    <button type="button" id="playPauseBtn" onclick="togglePlayPause()">▶</button>
-                    <span class="play-again-label" id="playPauseLabel">Play</span>
-                </div>
+               
             </div>
         </div>
 

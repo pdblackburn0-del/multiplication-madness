@@ -24,11 +24,29 @@ function generateQuestions() {
     }
 }
 
+// Build Progress Bar Function
+function buildProgressBar() {
+    const bar = document.getElementById("progressBar");
+    bar.innerHTML = "";
+
+    for (let i = 0; i < questions.length; i++) {
+        const box = document.createElement("div");
+        box.classList.add("progress-box");
+
+        if (i === currentQuestion) {
+            box.classList.add("current");
+        }
+
+        bar.appendChild(box);
+    }
+}
+
 // ===============================
 // Game Flow
 // ===============================
 function startGame() {
     generateQuestions();
+    buildProgressBar();
     currentQuestion = 0;
     correctAnswers = 0;
     isPaused = false;
@@ -58,6 +76,9 @@ function nextQuestion() {
     updateAnswerBox();
     updateTimer();
 
+    const boxes = document.querySelectorAll(".progress-box");
+    boxes[currentQuestion].classList.add("current");
+
     clearInterval(timerInterval);
     timerInterval = setInterval(handleTimerTick, 1000);
 }
@@ -84,6 +105,11 @@ function handleTimerTick() {
 
     if (timer <= 0) {
         clearInterval(timerInterval);
+
+        const boxes = document.querySelectorAll(".progress-box");
+        boxes[currentQuestion].classList.add("wrong");
+        boxes[currentQuestion].classList.remove("current");
+
         currentQuestion++;
         nextQuestion();
     }
@@ -114,10 +140,16 @@ function submitAnswer() {
     clearInterval(timerInterval);
 
     const q = questions[currentQuestion];
+    const boxes = document.querySelectorAll(".progress-box");
+
     if (parseInt(userInput, 10) === q.answer) {
         correctAnswers++;
-        document.getElementById("score").textContent = correctAnswers;
+        boxes[currentQuestion].classList.add("correct");
+    } else {
+        boxes[currentQuestion].classList.add("wrong");
     }
+
+    boxes[currentQuestion].classList.remove("current");
 
     currentQuestion++;
     nextQuestion();

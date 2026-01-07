@@ -186,30 +186,31 @@ button {
 /* Progress Bar */
 .progress-bar {
     display: flex;
-    gap: 6px;
+    gap: 1px;
     margin-top: 10px;
 }
 
 /* Individual question boxes */
 .progress-box {
-    width: 18px;
-    height: 18px;
-    border-radius: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
     background-color: lightgray;
 }
 
 /* Current question */
 .progress-box.current {
-    background-color: var(--sail);
+    background-color: white;
+    border: 2px red;
 }
 
 /* Correct / incorrect states */
 .progress-box.correct {
-    background-color: var(--fern-green);
+    background-color: green;
 }
 
 .progress-box.wrong {
-    background-color: var(--punch);
+    background-color: red;
 }
 
 /*background image for tablets and mobiles*/

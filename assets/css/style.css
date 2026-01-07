@@ -59,8 +59,9 @@ body {
     text-align: center;
     font-family: 'Playpen Sans', sans-serif;
 }
+
 /* Question text styling */
-.display, 
+.display,
 .question,
 .info {
     font-family: var(--font-primary);
@@ -123,7 +124,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin-bottom: 5px; 
+    margin-bottom: 5px;
 }
 
 /* Button sizing */
@@ -131,8 +132,9 @@ body {
 button {
     font-size: 40px;
     padding: 10px;
-    
+
 }
+
 #game button {
     height: 80px;
     width: 80px;
@@ -181,6 +183,83 @@ button {
     font-size: 28px;
 }
 
+/* Progress Bar */
+.progress-bar {
+    display: flex;
+    gap: 1px;
+    margin-top: 10px;
+}
+
+/* Individual question boxes */
+.progress-box {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    background-color: lightgray;
+}
+
+@keyframes currentBox {
+    from {background-color: white;}
+    to {background-color: red}
+}
+
+/* Current question */
+.progress-box.current {
+    background-color: white;
+    border: 2px red;
+    animation-name: currentBox;
+    animation-duration: 10s;
+}
+
+@keyframes fireworks {
+    0% {
+        opacity: 1;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
+}
+
+/* Correct / incorrect states */
+.progress-box.correct {
+    background-color: green;
+    animation: correctPop 0.4s ease-out forwards;
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Firework generator */
+.progress-box.correct::before,
+.progress-box.correct::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    background:
+        radial-gradient(circle, yellow 20%, transparent 20%),
+        radial-gradient(circle, orange 20%, transparent 20%),
+        radial-gradient(circle, red 20%, transparent 20%),
+        radial-gradient(circle, white 20%, transparent 20%);
+    background-size: 6px 6px;
+    background-position:
+        0 0,
+        100% 0,
+        0 100%,
+        100% 100%;
+    transform: translate(-50%, -50%);
+    animation: fireworks 0.6s ease-out forwards;
+    pointer-events: none;
+}
+
+.progress-box.wrong {
+    background-color: red;
+}
+
 /*background image for tablets and mobiles*/
 @media (max-width: 992px) {
     body {
@@ -200,12 +279,14 @@ button {
     font-family: var(--font-primary);
     color: var(--color-primary);
 }
+
 #game button {
     font-family: var(--font-primary);
     color: var(--color-primary);
     background-color: yellow;
     border-radius: 999px;
 }
+
 #game button:hover {
     background-color: yellowgreen;
     cursor: pointer;
@@ -213,7 +294,7 @@ button {
 }
 
 .info {
-    display:flex;
+    display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 20px;

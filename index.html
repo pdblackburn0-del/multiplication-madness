@@ -6,16 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multiplication Madness</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <meta name="description" content="Test your multiplication skills with our fun and interactive multiplication quiz! Challenge yourself and improve your math abilities while having a great time- for 5-11 years old.">
-    <meta name="keywords" content="multiplication quiz, math games for kids, multiplication practice, fun math activities, educational games, times tables, math skills improvement, interactive learning, kids math challenges">   
-    <meta name="author" content="Aimee, Pete, Rory and Tolase -Tech for Kids Ltd"> 
-    
+    <meta name="description"
+        content="Test your multiplication skills with our fun and interactive multiplication quiz! Challenge yourself and improve your math abilities while having a great time- for 5-11 years old.">
+    <meta name="keywords"
+        content="multiplication quiz, math games for kids, multiplication practice, fun math activities, educational games, times tables, math skills improvement, interactive learning, kids math challenges">
+    <meta name="author" content="Aimee, Pete, Rory and Tolase -Tech for Kids Ltd">
+
 
     <!--favicon    -->
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
-<link rel="manifest" href="/assets/images/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/site.webmanifest">
 </head>
 
 <body>
@@ -26,72 +28,68 @@
 
     <!--input section-->
 
-</div>
+    </div>
 
-       
+
 
     <section class="calc-section">
         <div class="game-container">
             <div id="game" class="hidden">
-                
+
 
                 <div class="info">
                     <span>⏱ <span id="timer">10</span>s</span>
+
                     <span class="play-again-row">
-                    <button type="button" id="playPauseBtn" onclick="togglePlayPause()">▶</button>
-                    <span class="play-again-label" id="playPauseLabel">Play</span>
-                </span>
-                    <span>✔ <span id="score">0</span>/25</span>
+                        <button type="button" id="playPauseBtn" onclick="togglePlayPause()">▶</button>
+                        <span class="play-again-label" id="playPauseLabel"></span>
+                    </span>
+                    
+                    <div id="progressBar" class="progress-bar"></div>
                 </div>
 
-                
-    <!--input section-->
-  <div class="input-section">
-    <input 
-        type="text"
-        id="answerInput"
-        class="answer-box"
-        placeholder="Your answer"
-        readonly
-    >
 
-                <div class="calculator">
-                    <div class="top-row">
-                        <button type="button" class="number" onclick="addNumber(7)">7</button>
-                        <button type="button" class="number" onclick="addNumber(8)">8</button>
-                        <button type="button" class="number" onclick="addNumber(9)">9</button>
+                <!--input section-->
+                <div class="input-section">
+                    <input type="text" id="answerInput" class="answer-box" placeholder="Your answer" readonly>
 
-                    </div>
+                    <div class="calculator">
+                        <div class="top-row">
+                            <button type="button" class="number" onclick="addNumber(7)">7</button>
+                            <button type="button" class="number" onclick="addNumber(8)">8</button>
+                            <button type="button" class="number" onclick="addNumber(9)">9</button>
 
-                    <div class="middle-row">
-                        <button type="button" class="number" onclick="addNumber(4)">4</button>
-                        <button type="button" class="number" onclick="addNumber(5)">5</button>
-                        <button type="button" class="number" onclick="addNumber(6)">6</button>
-                    </div>
+                        </div>
 
-                    <div class="bottom-row">
-                        <button type="button" class="number" onclick="addNumber(1)">1</button>
-                        <button type="button" class="number" onclick="addNumber(2)">2</button>
-                        <button type="button" class="number" onclick="addNumber(3)">3</button>
-                    </div>
+                        <div class="middle-row">
+                            <button type="button" class="number" onclick="addNumber(4)">4</button>
+                            <button type="button" class="number" onclick="addNumber(5)">5</button>
+                            <button type="button" class="number" onclick="addNumber(6)">6</button>
+                        </div>
 
-                    <div class="zero-row">
-                        <button type="button" class="number" onclick="addNumber(0)">0</button>
-                    </div>
+                        <div class="bottom-row">
+                            <button type="button" class="number" onclick="addNumber(1)">1</button>
+                            <button type="button" class="number" onclick="addNumber(2)">2</button>
+                            <button type="button" class="number" onclick="addNumber(3)">3</button>
+                        </div>
 
-                    <div class="calc-functions-row">
-                        <button type="button" class="clear" onclick="clearInput()">Delete</button>
-                        <button type="button" class="submit" onclick="submitAnswer()">Enter</button>
+                        <div class="zero-row">
+                            <button type="button" class="number" onclick="addNumber(0)">0</button>
+                        </div>
+
+                        <div class="calc-functions-row">
+                            <button type="button" class="clear" onclick="clearInput()">Delete</button>
+                            <button type="button" class="submit" onclick="submitAnswer()">Enter</button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div id="result">
-                <h2>Game Over </h2>
-                <p>Your Score: <span id="finalScore"></span>/25</p>
-               
+                <div id="result">
+                    <h2>Game Over </h2>
+                    <p>Your Score: <span id="finalScore"></span>/25</p>
+
+                </div>
             </div>
-        </div>
 
     </section>
 
@@ -99,7 +97,7 @@
     <div class="score-section">
         <h3>Score section</h3>
     </div>
-       <script defer src="assets/js/script.js"></script>
+    <script defer src="assets/js/script.js"></script>
 </body>
 
 </html>

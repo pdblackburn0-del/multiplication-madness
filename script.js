@@ -150,3 +150,42 @@ function togglePlayPause() {
         document.getElementById("playPauseLabel").textContent = 'Play';
     }
 }
+// ===============================
+// Keyboard Controls
+// ===============================
+document.addEventListener("keydown", (e) => {
+    // Prevent browser scrolling with space
+    if (e.code === "Space") {
+        e.preventDefault();
+    }
+
+    // Ignore keyboard input when result screen is shown
+    if (!document.getElementById("result").classList.contains("hidden")) {
+        return;
+    }
+
+    // Number keys (top row + numpad)
+    if (e.key >= "0" && e.key <= "9") {
+        addNumber(e.key);
+    }
+
+    // Enter submits answer
+    else if (e.key === "Enter") {
+        submitAnswer();
+    }
+
+    // Backspace clears input
+    else if (e.key === "Backspace") {
+        clearInput();
+    }
+
+    // Space toggles play/pause
+    else if (e.code === "Space") {
+        togglePlayPause();
+    }
+
+    // Escape pauses game if running
+    else if (e.key === "Escape" && !isPaused) {
+        togglePlayPause();
+    }
+});

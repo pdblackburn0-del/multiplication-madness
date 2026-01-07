@@ -95,6 +95,10 @@ function endGame() {
 
     setPlayPauseUI(false);
     toggleCalculatorButtons(true);
+
+        // Show Bootstrap modal with score
+    document.getElementById("modalScore").textContent = correctAnswers;
+    new bootstrap.Modal(document.getElementById("quizEndModal")).show();
 }
 
 // ===============================

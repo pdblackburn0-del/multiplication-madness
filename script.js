@@ -1,12 +1,20 @@
+// ===============================
+// Game State
+// ===============================
 let questions = [];
 let currentQuestion = 0;
 let correctAnswers = 0;
-let timer = 7;
-let timerInterval;
+
+let timer = 10;
+let timerInterval = null;
+
 let userInput = "";
 let isPaused = false;
+let currentQuestionText = "";
 
-
+// ===============================
+// Question Generation
+// ===============================
 function generateQuestions() {
     questions = [];
     for (let i = 0; i < 25; i++) {
@@ -16,77 +24,97 @@ function generateQuestions() {
     }
 }
 
+// ===============================
+// Game Flow
+// ===============================
 function startGame() {
     generateQuestions();
     currentQuestion = 0;
     correctAnswers = 0;
     isPaused = false;
-    document.getElementById("score").textContent = 0;
+
+    document.getElementById("score").textContent = "0";
     document.getElementById("game").classList.remove("hidden");
     document.getElementById("result").classList.add("hidden");
-    
-    const playPauseBtn = document.getElementById("playPauseBtn");
-    const playPauseLabel = document.getElementById("playPauseLabel");
-    if (playPauseBtn) {
-        playPauseBtn.textContent = '⏸';
-    }
-    if (playPauseLabel) {
-        playPauseLabel.textContent = 'Pause';
-    }
-    
+
+    setPlayPauseUI(true);
+    toggleCalculatorButtons(false);
+
     nextQuestion();
 }
 
 function nextQuestion() {
-    if (currentQuestion >= 25) {
+    if (currentQuestion >= questions.length) {
         endGame();
         return;
     }
 
     userInput = "";
-    updateDisplay();
-
     timer = 10;
-    document.getElementById("timer").textContent = timer;
 
     const q = questions[currentQuestion];
-    document.getElementById("question").textContent =
-        `${q.a} × ${q.b} = ?`;
-          clearInterval(timerInterval);
-    timerInterval = setInterval(() => {
-        timer--;
-        document.getElementById("timer").textContent = timer;
-        if (timer === 0) {
-            clearInterval(timerInterval);
-            currentQuestion++;
-            nextQuestion();
-        }
-    }, 1000);
+    currentQuestionText = `${q.a} × ${q.b} = `;
+
+    updateAnswerBox();
+    updateTimer();
+
+    clearInterval(timerInterval);
+    timerInterval = setInterval(handleTimerTick, 1000);
 }
 
+function endGame() {
+    clearInterval(timerInterval);
 
+    document.getElementById("game").classList.add("hidden");
+    document.getElementById("result").classList.remove("hidden");
+    document.getElementById("finalScore").textContent = correctAnswers;
+
+    setPlayPauseUI(false);
+    toggleCalculatorButtons(true);
+}
+
+// ===============================
+// Timer Logic
+// ===============================
+function handleTimerTick() {
+    if (isPaused) return;
+
+    timer--;
+    updateTimer();
+
+    if (timer <= 0) {
+        clearInterval(timerInterval);
+        currentQuestion++;
+        nextQuestion();
+    }
+}
+
+function updateTimer() {
+    document.getElementById("timer").textContent = timer;
+}
+
+// ===============================
+// Input Handling
+// ===============================
 function addNumber(num) {
     if (isPaused) return;
     userInput += num;
-    updateDisplay();
+    updateAnswerBox();
 }
 
 function clearInput() {
     if (isPaused) return;
     userInput = "";
-    updateDisplay();
-}
-
-function updateDisplay() {
-    document.getElementById("display").textContent = userInput;
+    updateAnswerBox();
 }
 
 function submitAnswer() {
     if (isPaused) return;
+
     clearInterval(timerInterval);
 
     const q = questions[currentQuestion];
-    if (parseInt(userInput) === q.answer) {
+    if (parseInt(userInput, 10) === q.answer) {
         correctAnswers++;
         document.getElementById("score").textContent = correctAnswers;
     }
@@ -95,96 +123,80 @@ function submitAnswer() {
     nextQuestion();
 }
 
-function endGame() {
-    clearInterval(timerInterval);
-    isPaused = false;
-    document.getElementById("game").classList.add("hidden");
-    document.getElementById("result").classList.remove("hidden");
-    document.getElementById("finalScore").textContent = correctAnswers;
-    
-    const playPauseBtn = document.getElementById("playPauseBtn");
-    const playPauseLabel = document.getElementById("playPauseLabel");
-    if (playPauseBtn) {
-        playPauseBtn.textContent = '▶';
-    }
-    if (playPauseLabel) {
-        playPauseLabel.textContent = 'Play';
-    }
+// ===============================
+// Answer Box Display
+// ===============================
+function updateAnswerBox() {
+    document.getElementById("answerInput").value =
+        currentQuestionText + userInput;
 }
 
+// ===============================
+// Play / Pause
+// ===============================
+function togglePlayPause() {
+    const gameHidden = document.getElementById("game").classList.contains("hidden");
+
+    // Start game
+    if (gameHidden) {
+        startGame();
+        return;
+    }
+
+    // Resume
+    if (isPaused) {
+        isPaused = false;
+        toggleCalculatorButtons(false);
+        setPlayPauseUI(true);
+        return;
+    }
+
+    // Pause
+    isPaused = true;
+    toggleCalculatorButtons(true);
+    setPlayPauseUI(false);
+}
+
+function setPlayPauseUI(isPlaying) {
+    document.getElementById("playPauseBtn").textContent = isPlaying ? "⏸" : "▶";
+    document.getElementById("playPauseLabel").textContent = isPlaying ? "Pause" : "Play";
+}
+
+// ===============================
+// Calculator Buttons
+// ===============================
 function toggleCalculatorButtons(disabled) {
-    const buttons = document.querySelectorAll('.calculator button');
-    buttons.forEach(button => {
-        button.disabled = disabled;
-        button.style.opacity = disabled ? '0.5' : '1';
-        button.style.cursor = disabled ? 'not-allowed' : 'pointer';
+    const buttons = document.querySelectorAll(".calculator button");
+    buttons.forEach(btn => {
+        btn.disabled = disabled;
+        btn.style.opacity = disabled ? "0.5" : "1";
+        btn.style.cursor = disabled ? "not-allowed" : "pointer";
     });
 }
 
-function togglePlayPause() {
-    if (document.getElementById("game").classList.contains("hidden")) {
-        // Game not started yet, start it
-        startGame();
-        toggleCalculatorButtons(false);
-    } else if (isPaused) {
-        // Resume game
-        isPaused = false;
-        toggleCalculatorButtons(false);
-        timerInterval = setInterval(() => {
-            timer--;
-            document.getElementById("timer").textContent = timer;
-            if (timer === 0) {
-                clearInterval(timerInterval);
-                currentQuestion++;
-                nextQuestion();
-            }
-        }, 1000);
-        document.getElementById("playPauseBtn").textContent = '⏸';
-        document.getElementById("playPauseLabel").textContent = 'Pause';
-    } else {
-        // Pause game
-        isPaused = true;
-        toggleCalculatorButtons(true);
-        clearInterval(timerInterval);
-        document.getElementById("playPauseBtn").textContent = '▶';
-        document.getElementById("playPauseLabel").textContent = 'Play';
-    }
-}
 // ===============================
 // Keyboard Controls
 // ===============================
 document.addEventListener("keydown", (e) => {
-    // Prevent browser scrolling with space
-    if (e.code === "Space") {
-        e.preventDefault();
-    }
 
-    // Ignore keyboard input when result screen is shown
-    if (!document.getElementById("result").classList.contains("hidden")) {
-        return;
-    }
+    // Prevent page scroll on space
+    if (e.code === "Space") e.preventDefault();
 
-    // Number keys (top row + numpad)
+    // Ignore input if result screen visible
+    if (!document.getElementById("result").classList.contains("hidden")) return;
+
     if (e.key >= "0" && e.key <= "9") {
         addNumber(e.key);
     }
-
-    // Enter submits answer
     else if (e.key === "Enter") {
         submitAnswer();
     }
-
-    // Backspace clears input
     else if (e.key === "Backspace") {
         clearInput();
     }
-
-    // Space toggles play/pause
     else if (e.code === "Space") {
         togglePlayPause();
     }
-
-    // Escape pauses game if running
     else if (e.key === "Escape" && !isPaused) {
         togglePlayPause();
     }

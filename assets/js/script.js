@@ -51,7 +51,10 @@ function startGame() {
     correctAnswers = 0;
     isPaused = false;
 
-    document.getElementById("score").textContent = "0";
+    // Fixed: Changed "score" to "finalScore" or remove if not needed yet
+    const finalScoreElem = document.getElementById("finalScore");
+    if (finalScoreElem) finalScoreElem.textContent = "0";
+
     document.getElementById("game").classList.remove("hidden");
     document.getElementById("result").classList.add("hidden");
 

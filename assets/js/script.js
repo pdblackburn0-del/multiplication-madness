@@ -89,9 +89,17 @@ function nextQuestion() {
 function endGame() {
     clearInterval(timerInterval);
 
+    // Update the scores in both the UI and the Modal
+    document.getElementById("finalScore").textContent = correctAnswers;
+    document.getElementById("modalScore").textContent = correctAnswers;
+
+    // Hide game screen, show result screen
     document.getElementById("game").classList.add("hidden");
     document.getElementById("result").classList.remove("hidden");
-    document.getElementById("finalScore").textContent = correctAnswers;
+
+    // Trigger the Bootstrap Modal
+    const myModal = new bootstrap.Modal(document.getElementById('gameOverModal'));
+    myModal.show();
 
     setPlayPauseUI(false);
     toggleCalculatorButtons(true);

@@ -30,14 +30,54 @@
         Test your skills and have fun!
     </h2>
 
-    <!--input section-->
-
-    </div>
-
-
-
     <section class="calc-section">
         <div class="game-container">
+            
+            <!-- Start Button -->
+            <div id="startScreen" class="start-screen">
+                <div class="start-content">
+                    <button type="button" class="instructions-btn" onclick="showInstructions()">How to Play</button>
+                    <button type="button" class="start-btn" onclick="startGame()">Start Game</button>
+                </div>
+            </div>
+
+            <!-- Instructions Screen -->
+            <div id="instructionsScreen" class="instructions-screen hidden">
+                <div class="instructions-content">
+                    <h3>How to Play 🎮</h3>
+                    <div class="instructions-list">
+                        <div class="instruction-item">
+                            <span class="instruction-icon">🎯</span>
+                            <p>Answer 25 multiplication questions as fast as you can!</p>
+                        </div>
+                        <div class="instruction-item">
+                            <span class="instruction-icon">⏱️</span>
+                            <p>You have 10 seconds to answer each question.</p>
+                        </div>
+                        <div class="instruction-item">
+                            <span class="instruction-icon">🔢</span>
+                            <p>Use the on-screen calculator or your keyboard to enter answers.</p>
+                        </div>
+                        <div class="instruction-item">
+                            <span class="instruction-icon">⏸️</span>
+                            <p>Press SPACE or ESC to pause/resume the game.</p>
+                        </div>
+                        <div class="instruction-item">
+                            <span class="instruction-icon">✅</span>
+                            <p>Click "Enter" or press ENTER key to submit your answer.</p>
+                        </div>
+                        <div class="instruction-item">
+                            <span class="instruction-icon">🏆</span>
+                            <p>Get as many correct answers as possible to achieve a high score!</p>
+                        </div>
+                    </div>
+                    <div class="instructions-buttons">
+                        <button type="button" class="play-game-btn" onclick="startGame()">Play Game</button>
+                        <button type="button" class="back-btn" onclick="hideInstructions()">Back</button>
+                    </div>
+                </div>
+            </div>
+
             <div id="game" class="hidden">
 
 
@@ -87,12 +127,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div id="result">
-                    <h2>Game Over </h2>
-                    <p>Your Score: <span id="finalScore"></span>/25</p>
-
-                </div>
             </div>
 
     </section>
@@ -102,7 +136,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content text-center">
       <div class="modal-header">
-        <h5 class="modal-title">🎉 Quiz Complete!</h5>
+        <h5 class="modal-title">🎉 Quiz Completed!</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
@@ -116,10 +150,7 @@
   </div>
 </div>
 
-    <!--Score-->
-    <div class="score-section">
-        <h3>Score section</h3>
-    </div>
+    
     <!--Script tag for JavaScript file -->
     <script defer src="assets/js/script.js"></script>
 

@@ -9,6 +9,13 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 
@@ -37,11 +44,17 @@ h2 {
 .page-title {
     color: var(--color-primary);
     text-align: center;
+    margin: 15px 10px 5px;
+    font-size: clamp(24px, 6vw, 48px);
+    padding: 0 10px;
 }
 
 .page-sub-title {
     color: var(--color-secondary);
     text-align: center;
+    margin: 5px 10px 15px;
+    font-size: clamp(14px, 4vw, 24px);
+    padding: 0 10px;
 }
 
 
@@ -65,7 +78,7 @@ body {
 .question,
 .info {
     font-family: var(--font-primary);
-    font-size: 35px;
+    font-size: clamp(24px, 5vw, 40px);
     text-align: center;
     color: var(--color-primary);
 }
@@ -73,13 +86,13 @@ body {
 /* Answer input styling */
 .answer-box {
     font-family: var(--font-primary);
-    font-size: 30px;
+    font-size: clamp(20px, 5vw, 40px);
     text-align: center;
 
-    width: 220px;
-    height: 60px;
+    width: clamp(180px, 70vw, 300px);
+    height: clamp(50px, 12vw, 90px);
 
-    margin: 20px auto;
+    margin: clamp(15px, 4vw, 25px) auto;
     display: block;
 
     color: var(--color-primary);
@@ -88,17 +101,9 @@ body {
     border: none;
     border-radius: 999px;
 
-    box-shadow: 0 6px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 clamp(3px, 1vw, 6px) 0 rgba(0, 0, 0, 0.15);
     outline: none;
-}
-
-/* Mobile sizing */
-@media (max-width: 992px) {
-    .answer-box {
-        font-size: 40px;
-        width: 300px;
-        height: 90px;
-    }
+    flex-shrink: 0;
 }
 
 /* Styling for the central calculator */
@@ -123,41 +128,50 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 5px;
+    gap: clamp(5px, 2vw, 12px);
+    margin-bottom: clamp(3px, 1vw, 8px);
+    flex-wrap: wrap;
 }
 
 /* Button sizing */
 
 button {
-    font-size: 40px !important;
-    padding: 10px !important;
-
+    font-size: clamp(16px, 3.5vw, 40px) !important;
+    padding: clamp(6px, 1.5vw, 12px) !important;
+    font-family: var(--font-primary);
 }
+
 .clear,
 .submit {
-    font-size: 18px !important;
+    font-size: clamp(14px, 2.5vw, 20px) !important;
 }
+
 #game button {
-    height: 80px;
-    width: 80px;
+    height: clamp(50px, 12vw, 85px);
+    width: clamp(50px, 12vw, 85px);
+    flex-shrink: 0;
 }
 
 .calc-functions-row button {
-    font-size: 22px;
+    font-size: clamp(14px, 2.5vw, 22px);
     white-space: nowrap;
     display: flex;
     align-items: center;
     justify-content: center;
     line-height: 1;
+    height: clamp(45px, 10vw, 75px);
+    width: clamp(80px, 30vw, 140px);
+    flex: 1;
+    min-width: clamp(60px, 25vw, 120px);
 }
 
 .play-again-row {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    margin-top: 10px;
+    gap: clamp(8px, 2vw, 12px);
+    margin-top: clamp(8px, 2vw, 15px);
+    flex-wrap: wrap;
 }
 
 .play-again-row button {
@@ -165,12 +179,14 @@ button {
     align-items: center;
     justify-content: center;
     line-height: 1;
+    height: clamp(40px, 10vw, 60px);
+    width: clamp(40px, 10vw, 60px);
 }
 
 .pause-button-container {
     display: flex;
     justify-content: center;
-    margin: 10px 0;
+    margin: clamp(8px, 2vw, 15px) 0;
 }
 
 .pause-btn {
@@ -183,22 +199,26 @@ button {
 .play-again-label {
     font-family: var(--font-primary);
     color: var(--color-primary);
-    font-size: 28px;
+    font-size: clamp(18px, 4vw, 28px);
+    white-space: nowrap;
 }
 
 /* Progress Bar */
 .progress-bar2 {
     display: flex;
-    gap: 1px;
-    margin-top: 10px;
+    gap: clamp(0.5px, 0.3vw, 1px);
+    margin-top: clamp(8px, 2vw, 15px);
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 /* Individual question boxes */
 .progress-box {
-    width: 10px;
-    height: 10px;
+    width: clamp(6px, 1.5vw, 12px);
+    height: clamp(6px, 1.5vw, 12px);
     border-radius: 2px;
     background-color: lightgray;
+    flex-shrink: 0;
 }
 
 @keyframes currentBox {
@@ -271,16 +291,36 @@ button {
         background-repeat: no-repeat;
         height: 100%;
     }
-
-    button {
-        font-size: 40px;
-    }
 }
 
 /*Calc section styling*/
+.calc-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(10px, 2vw, 20px);
+    min-height: 100vh;
+    width: 100%;
+}
+
+.game-container {
+    width: 100%;
+    max-width: 600px;
+    padding: clamp(10px, 3vw, 20px);
+}
+
 #game {
     font-family: var(--font-primary);
     color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(15px, 3vw, 25px);
+    width: 100%;
+}
+
+#game.hidden {
+    display: none !important;
 }
 
 #game button {
@@ -288,6 +328,7 @@ button {
     color: var(--color-primary);
     background-color: yellow;
     border-radius: 999px;
+    transition: all 0.2s ease;
 }
 
 #game button:hover {
@@ -296,10 +337,390 @@ button {
     color: var(--color-secondary);
 }
 
+#game button:active {
+    transform: scale(0.95);
+}
+
 .info {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 20px;
+    gap: clamp(12px, 2vw, 20px);
     align-items: center;
+    width: 100%;
+    padding: clamp(10px, 2vw, 15px);
+    flex-wrap: wrap;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: clamp(15px, 3vw, 25px);
+}
+
+.calculator {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(5px, 1vw, 8px);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ================================
+   Start Screen Styling
+   ================================ */
+
+.start-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(30px, 8vw, 60px);
+    width: 100%;
+}
+
+.start-content {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(15px, 3vw, 25px);
+    align-items: center;
+}
+
+.start-btn,
+.instructions-btn {
+    font-family: var(--font-primary);
+    font-size: clamp(18px, 4vw, 28px) !important;
+    font-weight: 700;
+    color: var(--color-primary);
+    border: clamp(3px, 0.5vw, 5px) solid var(--color-primary);
+    border-radius: 999px;
+    padding: clamp(12px, 2.5vw, 20px) clamp(30px, 6vw, 60px) !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 clamp(5px, 1vw, 8px) clamp(15px, 3vw, 25px) rgba(0, 0, 0, 0.2);
+    min-width: clamp(180px, 50vw, 280px);
+}
+
+.start-btn {
+    background: linear-gradient(135deg, #f9d830 0%, #b8d630 100%);
+}
+
+.instructions-btn {
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+    color: #ffffff;
+}
+
+.start-btn:hover {
+    background: linear-gradient(135deg, #b8d630 0%, #f9d830 100%);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 clamp(8px, 2vw, 12px) clamp(20px, 4vw, 30px) rgba(0, 0, 0, 0.3);
+}
+
+.instructions-btn:hover {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 clamp(8px, 2vw, 12px) clamp(20px, 4vw, 30px) rgba(163, 85, 192, 0.5);
+}
+
+.start-btn:active,
+.instructions-btn:active {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 clamp(3px, 0.5vw, 5px) clamp(10px, 2vw, 15px) rgba(0, 0, 0, 0.2);
+}
+
+/* ================================
+   Instructions Screen Styling
+   ================================ */
+
+.instructions-screen {
+    width: 100%;
+    max-width: 700px;
+    padding: clamp(15px, 3vw, 30px);
+}
+
+.instructions-content {
+    background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+    border: clamp(3px, 0.5vw, 5px) solid var(--color-primary);
+    border-radius: clamp(15px, 3vw, 25px);
+    padding: clamp(20px, 4vw, 40px);
+    box-shadow: 0 clamp(5px, 1vw, 10px) clamp(20px, 4vw, 40px) rgba(0, 0, 0, 0.15);
+}
+
+.instructions-content h3 {
+    font-family: var(--font-primary);
+    color: var(--color-primary);
+    font-size: clamp(24px, 5vw, 36px);
+    text-align: center;
+    margin: 0 0 clamp(20px, 4vw, 30px) 0;
+}
+
+.instructions-list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 2.5vw, 20px);
+    margin-bottom: clamp(25px, 5vw, 35px);
+}
+
+.instruction-item {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(10px, 2vw, 15px);
+    padding: clamp(10px, 2vw, 15px);
+    background: linear-gradient(135deg, #f9d830 0%, #b8d630 100%);
+    border-radius: clamp(10px, 2vw, 15px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.instruction-icon {
+    font-size: clamp(24px, 5vw, 32px);
+    flex-shrink: 0;
+}
+
+.instruction-item p {
+    font-family: var(--font-primary);
+    color: var(--color-primary);
+    font-size: clamp(14px, 3vw, 18px);
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.instructions-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 2.5vw, 15px);
+    align-items: center;
+}
+
+.play-game-btn,
+.back-btn {
+    font-family: var(--font-primary);
+    font-size: clamp(16px, 3.5vw, 24px) !important;
+    font-weight: 700;
+    border: clamp(3px, 0.5vw, 4px) solid var(--color-primary);
+    border-radius: 999px;
+    padding: clamp(12px, 2.5vw, 18px) clamp(30px, 6vw, 50px) !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 clamp(4px, 0.8vw, 6px) clamp(12px, 2.5vw, 18px) rgba(0, 0, 0, 0.2);
+    min-width: clamp(160px, 45vw, 240px);
+}
+
+.play-game-btn {
+    background: linear-gradient(135deg, #f9d830 0%, #b8d630 100%);
+    color: var(--color-primary);
+}
+
+.back-btn {
+    background: #ffffff;
+    color: var(--color-primary);
+}
+
+.play-game-btn:hover {
+    background: linear-gradient(135deg, #b8d630 0%, #f9d830 100%);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 clamp(6px, 1.2vw, 9px) clamp(15px, 3vw, 22px) rgba(0, 0, 0, 0.3);
+}
+
+.back-btn:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 clamp(6px, 1.2vw, 9px) clamp(15px, 3vw, 22px) rgba(0, 0, 0, 0.3);
+}
+
+.play-game-btn:active,
+.back-btn:active {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 clamp(2px, 0.4vw, 4px) clamp(8px, 1.5vw, 12px) rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments for instructions */
+@media (min-width: 768px) {
+    .instructions-buttons {
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .instruction-item {
+        align-items: center;
+    }
+}
+
+/* ================================
+   Quiz End Modal Styling
+   ================================ */
+
+/* Modal backdrop styling */
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal dialog sizing and positioning */
+.modal-dialog {
+    max-width: 90vw;
+    margin: auto;
+    padding: clamp(10px, 2vw, 20px);
+}
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 90vw;
+    }
+}
+
+@media (min-width: 992px) {
+    .modal-dialog {
+        max-width: 550px;
+    }
+}
+
+/* Modal content styling */
+.modal-content {
+    border: none;
+    border-radius: clamp(15px, 4vw, 25px);
+    background: linear-gradient(135deg, #f9d830 0%, #b8d630 100%);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 
+                0 0 0 clamp(2px, 0.5vw, 3px) var(--color-primary);
+    font-family: var(--font-primary);
+    overflow: hidden;
+}
+
+/* Modal header styling */
+.modal-header {
+    border-bottom: clamp(2px, 0.5vw, 3px) solid var(--color-primary);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    padding: clamp(15px, 3vw, 25px);
+}
+
+.modal-header .modal-title {
+    color: #ffffff;
+    font-size: clamp(20px, 5vw, 32px);
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+}
+
+.modal-header .btn-close {
+    filter: brightness(0) invert(1);
+    padding: 0;
+    position: absolute;
+    right: clamp(10px, 2vw, 15px);
+    top: clamp(8px, 2vw, 12px);
+}
+
+/* Modal body styling */
+.modal-body {
+    padding: clamp(20px, 5vw, 30px) clamp(15px, 3vw, 25px);
+    text-align: center;
+    background-color: #fff;
+}
+
+.modal-body p {
+    font-size: clamp(14px, 3vw, 18px);
+    color: var(--color-primary);
+    margin-bottom: clamp(10px, 2vw, 15px);
+    font-weight: 500;
+}
+
+.modal-body h2 {
+    font-size: clamp(36px, 10vw, 56px);
+    color: var(--color-primary);
+    font-weight: 800;
+    margin: 0;
+    animation: scaleIn 0.6s ease-out;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Modal footer styling */
+.modal-footer {
+    border-top: clamp(2px, 0.5vw, 3px) solid var(--color-primary);
+    padding: clamp(12px, 2vw, 15px);
+    background: linear-gradient(135deg, #f9d830 0%, #b8d630 100%);
+}
+
+.modal-footer .btn {
+    font-family: var(--font-primary);
+    font-size: clamp(14px, 3vw, 18px);
+    font-weight: 600;
+    padding: clamp(8px, 1.5vw, 12px) clamp(20px, 5vw, 35px);
+    border-radius: 999px;
+    border: none;
+    margin: 0 auto;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.modal-footer .btn-primary {
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: var(--color-secondary);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(51, 10, 76, 0.4);
+}
+
+.modal-footer .btn-primary:active {
+    transform: scale(0.98);
+}
+
+.modal-footer .btn-primary:active {
+    transform: scale(0.98);
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+    .page-title {
+        font-size: 20px;
+        margin: 10px 5px;
+    }
+    
+    .page-sub-title {
+        font-size: 12px;
+    }
+    
+    #game button {
+        height: 45px;
+        width: 45px;
+    }
+}
+
+/* Small devices */
+@media (max-width: 480px) {
+    .calculator {
+        max-width: 100%;
+    }
+    
+    .calc-functions-row button {
+        min-width: 50px;
+    }
+}
+
+/* Tablets and above */
+@media (min-width: 768px) {
+    .page-title {
+        font-size: 40px;
+        margin: 20px auto 10px;
+    }
+    
+    .page-sub-title {
+        font-size: 20px;
+        margin: 10px auto 20px;
+    }
 }

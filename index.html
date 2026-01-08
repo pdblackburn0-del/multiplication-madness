@@ -12,12 +12,10 @@
         content="multiplication quiz, math games for kids, multiplication practice, fun math activities, educational games, times tables, math skills improvement, interactive learning, kids math challenges">
     <meta name="author" content="Aimee, Pete, Rory and Tolase -Tech for Kids Ltd">
 
-    <!--Boostrap CSS CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-  rel="stylesheet">
+    <!--Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-
-    <!--favicon    -->
+    <!--favicon-->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
@@ -30,131 +28,168 @@
         Test your skills and have fun!
     </h2>
 
-    <section class="calc-section">
+    <section class="calc-section" aria-label="Multiplication quiz game area">
         <div class="game-container">
-            
-            <!-- Start Button -->
+
+            <!-- Start Screen -->
             <div id="startScreen" class="start-screen">
                 <div class="start-content">
-                    <button type="button" class="instructions-btn" onclick="showInstructions()">How to Play</button>
-                    <button type="button" class="start-btn" onclick="startGame()">Start Game</button>
+                    <button type="button" class="instructions-btn" onclick="showInstructions()"
+                        aria-label="Show game instructions">
+                        How to Play
+                    </button>
+                    <button type="button" class="start-btn" onclick="startGame()"
+                        aria-label="Start the multiplication quiz">
+                        Start Game
+                    </button>
                 </div>
             </div>
 
             <!-- Instructions Screen -->
-            <div id="instructionsScreen" class="instructions-screen hidden">
+            <div id="instructionsScreen" class="instructions-screen hidden" aria-labelledby="instructions-heading">
                 <div class="instructions-content">
-                    <h3>How to Play 🎮</h3>
+                    <h3 id="instructions-heading">How to Play <span aria-hidden="true">🎮</span></h3>
                     <div class="instructions-list">
+
                         <div class="instruction-item">
-                            <span class="instruction-icon">🎯</span>
+                            <span class="instruction-icon" aria-hidden="true">🎯</span>
                             <p>Answer 25 multiplication questions as fast as you can!</p>
                         </div>
+
                         <div class="instruction-item">
-                            <span class="instruction-icon">⏱️</span>
+                            <span class="instruction-icon" aria-hidden="true">⏱️</span>
                             <p>You have 10 seconds to answer each question.</p>
                         </div>
+
                         <div class="instruction-item">
-                            <span class="instruction-icon">🔢</span>
+                            <span class="instruction-icon" aria-hidden="true">🔢</span>
                             <p>Use the on-screen calculator or your keyboard to enter answers.</p>
                         </div>
+
                         <div class="instruction-item">
-                            <span class="instruction-icon">⏸️</span>
-                            <p>Press SPACE or ESC to pause/resume the game.</p>
+                            <span class="instruction-icon" aria-hidden="true">⏸️</span>
+                            <p>Press SPACE or ESC to pause or resume the game.</p>
                         </div>
+
                         <div class="instruction-item">
-                            <span class="instruction-icon">✅</span>
-                            <p>Click "Enter" or press ENTER key to submit your answer.</p>
+                            <span class="instruction-icon" aria-hidden="true">✅</span>
+                            <p>Click Enter or press the ENTER key to submit your answer.</p>
                         </div>
+
                         <div class="instruction-item">
-                            <span class="instruction-icon">🏆</span>
+                            <span class="instruction-icon" aria-hidden="true">🏆</span>
                             <p>Get as many correct answers as possible to achieve a high score!</p>
                         </div>
+
                     </div>
+
                     <div class="instructions-buttons">
-                        <button type="button" class="play-game-btn" onclick="startGame()">Play Game</button>
-                        <button type="button" class="back-btn" onclick="hideInstructions()">Back</button>
+                        <button type="button" class="play-game-btn" onclick="startGame()"
+                            aria-label="Start the game from instructions">
+                            Play Game
+                        </button>
+                        <button type="button" class="back-btn" onclick="hideInstructions()"
+                            aria-label="Return to start screen">
+                            Back
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <div id="game" class="hidden">
-
+            <!-- Game Screen -->
+            <div id="game" class="hidden" aria-live="polite">
 
                 <div class="info">
-                    <span>⏱ <span id="timer">10</span>s</span>
+                    <span aria-label="Time remaining in seconds">
+                        <span aria-hidden="true">⏱</span>
+                        <span id="timer">10</span>s
+                    </span>
 
                     <span class="play-again-row">
-                        <button type="button" id="playPauseBtn" onclick="togglePlayPause()">▶</button>
+                        <button type="button" id="playPauseBtn" onclick="togglePlayPause()"
+                            aria-label="Pause or resume the game">
+                            ▶
+                        </button>
                         <span class="play-again-label" id="playPauseLabel"></span>
                     </span>
-                    
-                    <div id="progressBar" class="progress-bar2"></div>
+
+                    <div id="progressBar" class="progress-bar2" aria-label="Quiz progress bar" role="progressbar"></div>
                 </div>
 
-
-                <!--input section-->
+                <!-- Input Section -->
                 <div class="input-section">
-                    <input type="text" id="answerInput" class="answer-box" placeholder="Your answer" readonly>
+                    <input type="text" id="answerInput" class="answer-box" placeholder="Your answer" readonly
+                        aria-label="Answer input field">
 
-                    <div class="calculator">
+                    <div class="calculator" aria-label="On-screen number keypad">
+
                         <div class="top-row">
-                            <button type="button" class="number" onclick="addNumber(7)">7</button>
-                            <button type="button" class="number" onclick="addNumber(8)">8</button>
-                            <button type="button" class="number" onclick="addNumber(9)">9</button>
-
+                            <button type="button" class="number" onclick="addNumber(7)" aria-label="Number 7">7</button>
+                            <button type="button" class="number" onclick="addNumber(8)" aria-label="Number 8">8</button>
+                            <button type="button" class="number" onclick="addNumber(9)" aria-label="Number 9">9</button>
                         </div>
 
                         <div class="middle-row">
-                            <button type="button" class="number" onclick="addNumber(4)">4</button>
-                            <button type="button" class="number" onclick="addNumber(5)">5</button>
-                            <button type="button" class="number" onclick="addNumber(6)">6</button>
+                            <button type="button" class="number" onclick="addNumber(4)" aria-label="Number 4">4</button>
+                            <button type="button" class="number" onclick="addNumber(5)" aria-label="Number 5">5</button>
+                            <button type="button" class="number" onclick="addNumber(6)" aria-label="Number 6">6</button>
                         </div>
 
                         <div class="bottom-row">
-                            <button type="button" class="number" onclick="addNumber(1)">1</button>
-                            <button type="button" class="number" onclick="addNumber(2)">2</button>
-                            <button type="button" class="number" onclick="addNumber(3)">3</button>
+                            <button type="button" class="number" onclick="addNumber(1)" aria-label="Number 1">1</button>
+                            <button type="button" class="number" onclick="addNumber(2)" aria-label="Number 2">2</button>
+                            <button type="button" class="number" onclick="addNumber(3)" aria-label="Number 3">3</button>
                         </div>
 
                         <div class="zero-row">
-                            <button type="button" class="number" onclick="addNumber(0)">0</button>
+                            <button type="button" class="number" onclick="addNumber(0)" aria-label="Number 0">0</button>
                         </div>
 
                         <div class="calc-functions-row">
-                            <button type="button" class="clear" onclick="clearInput()">Delete</button>
-                            <button type="button" class="submit" onclick="submitAnswer()">Enter</button>
+                            <button type="button" class="clear" onclick="clearInput()" aria-label="Delete last number">
+                                Delete
+                            </button>
+                            <button type="button" class="submit" onclick="submitAnswer()"
+                                aria-label="Submit your answer">
+                                Enter
+                            </button>
                         </div>
+
                     </div>
                 </div>
             </div>
 
+        </div>
     </section>
 
     <!-- Quiz End Modal -->
-<div class="modal fade" id="quizEndModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content text-center">
-      <div class="modal-header">
-        <h5 class="modal-title">🎉 Quiz Completed!</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <p>Your final score is:</p>
-        <h2><span id="modalScore"></span> / 25</h2>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-      </div>
+    <div class="modal fade" id="quizEndModal" tabindex="-1" aria-labelledby="quizEndTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="quizEndTitle">
+                        <span aria-hidden="true">🎉</span> Quiz Completed!
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close results modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Your final score is:</p>
+                    <h2><span id="modalScore"></span> / 25</h2>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close quiz results">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
-    
     <!--Script tag for JavaScript file -->
     <script defer src="assets/js/script.js"></script>
 
-    <!-- Bootstrap JavaScript Bundle with Popper -->
+    <!-- Bootstrap JavaScript Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

@@ -13,6 +13,19 @@ let isPaused = false;
 let currentQuestionText = "";
 
 // ===============================
+// Instructions Functions
+// ===============================
+function showInstructions() {
+    document.getElementById("startScreen").classList.add("hidden");
+    document.getElementById("instructionsScreen").classList.remove("hidden");
+}
+
+function hideInstructions() {
+    document.getElementById("instructionsScreen").classList.add("hidden");
+    document.getElementById("startScreen").classList.remove("hidden");
+}
+
+// ===============================
 // Question Generation
 // ===============================
 function generateQuestions() {
@@ -51,12 +64,13 @@ function startGame() {
     correctAnswers = 0;
     isPaused = false;
 
-    // Fixed: Changed "score" to "finalScore" or remove if not needed yet
-    const finalScoreElem = document.getElementById("finalScore");
-    if (finalScoreElem) finalScoreElem.textContent = "0";
-
+    // Hide start and instructions screens, show game
+    const startScreen = document.getElementById("startScreen");
+    const instructionsScreen = document.getElementById("instructionsScreen");
+    if (startScreen) startScreen.classList.add("hidden");
+    if (instructionsScreen) instructionsScreen.classList.add("hidden");
+    
     document.getElementById("game").classList.remove("hidden");
-    document.getElementById("result").classList.add("hidden");
 
     setPlayPauseUI(true);
     toggleCalculatorButtons(false);
@@ -90,13 +104,15 @@ function endGame() {
     clearInterval(timerInterval);
 
     document.getElementById("game").classList.add("hidden");
-    document.getElementById("result").classList.remove("hidden");
-    document.getElementById("finalScore").textContent = correctAnswers;
+    
+    // Show start screen again
+    const startScreen = document.getElementById("startScreen");
+    if (startScreen) startScreen.classList.remove("hidden");
 
     setPlayPauseUI(false);
     toggleCalculatorButtons(true);
 
-        // Show Bootstrap modal with score
+    // Show Bootstrap modal with score
     document.getElementById("modalScore").textContent = correctAnswers;
     new bootstrap.Modal(document.getElementById("quizEndModal")).show();
 }
@@ -221,22 +237,31 @@ document.addEventListener("keydown", (e) => {
     // Prevent page scroll on space
     if (e.code === "Space") e.preventDefault();
 
-    // Ignore input if result screen visible
-    if (!document.getElementById("result").classList.contains("hidden")) return;
+    // Ignore input if game is not visible
+    const gameElement = document.getElementById("game");
+    if (!gameElement || gameElement.classList.contains("hidden")) return;
 
-    if (e.key >= "0" && e.key <= "9") {
-        addNumber(e.key);
+    // Handle both main keyboard numbers (0-9) and numpad numbers (Numpad0-Numpad9)
+    if ((e.key >= "0" && e.key <= "9") || (e.code >= "Numpad0" && e.code <= "Numpad9")) {
+        // Don't allow input when paused
+        if (isPaused) return;
+        
+        // Extract the number from the key or code
+        const number = e.key >= "0" && e.key <= "9" ? e.key : e.code.replace("Numpad", "");
+        addNumber(number);
     }
-    else if (e.key === "Enter") {
+    else if (e.key === "Enter" || e.code === "NumpadEnter") {
+        // Don't allow submit when paused
+        if (isPaused) return;
         submitAnswer();
     }
-    else if (e.key === "Backspace") {
+    else if (e.key === "Backspace" || e.key === "Delete" || e.code === "NumpadDecimal") {
+        // Don't allow clearing when paused
+        if (isPaused) return;
         clearInput();
     }
-    else if (e.code === "Space") {
-        togglePlayPause();
-    }
-    else if (e.key === "Escape" && !isPaused) {
+    else if (e.code === "Space" || e.key === "Escape") {
+        // Both SPACE and ESC can pause/resume the game
         togglePlayPause();
     }
 });

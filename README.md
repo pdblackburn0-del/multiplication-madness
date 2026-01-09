@@ -1,10 +1,11 @@
-README
+# Multiplication Madness
 
-### Purpose
+
+## Purpose
 We built a website for children to help practice their multiplication skills in a quiz that replicates the government maths test (but just more fun!).
 
 
-### Target Audience
+## Target Audience
 Our target audience is children aged 5-11. Multiplication tables are extremely important in UK schools with a big emphasis in Year 4, where a government check is carried out on all UK pupils in Year 4 to complete 25 random questions. The pass mark is 25/25. 
 
 
@@ -143,7 +144,7 @@ CSS Validation:
 ![CSS Validation](/assets/images/CSS-validation.png)
 
 
-Tested using Chrome Dev Tools during development and using Am I Responsihttps://ui.dev/amiresponsiveve? 
+Tested using Chrome Dev Tools during development and using "Am I Responsive?"
 
 ![Website Responsiveness](/assets/images/Website-responsiveness.png)
 

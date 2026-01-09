@@ -29,10 +29,12 @@ We used google fonts to select a child friendly, fun and legible font: ‘Plaype
 ## Planning/Wireframe
 
 Large screens:
+
 ![PC Wireframe](/assets/images/pc-wireframe.png)
 
 
 Small screens and mobile devices:
+
 ![Mobile Wireframe](/assets/images/mobile-wireframe.png)
 
 
@@ -41,17 +43,21 @@ Small screens and mobile devices:
 The main design consisted of Main page and two modal pop ups, one with the instructions and one with the results
 
 Welcome menu- easy, responsive buttons aimed.
+
 ![Welcome menu](/assets/images/madness-welcome-menu.png)
 
 
 Instruction modal- combined pictures and easy to read instructions.
+
 ![Instructions](/assets/images/madness-instructions.png)
 
 Main game page- simple design, targeted to users of Primary School age.
+
 ![Main Game](/assets/images/madness-game.png)
 
 
 Result modal pop up.
+
 ![Results Modal](/assets/images/madness-result.png)
 
 -Media queries:
@@ -127,15 +133,18 @@ Included all the necessary accessibility options for screen readers (e.g. aria-l
 Responsiveness testing.
 
 HTML Validation:
+
 ![HTML Validation](/assets/images/HTML-validation.png)
 
 
 
 CSS Validation:
+
 ![CSS Validation](/assets/images/CSS-validation.png)
 
 
 Tested using Chrome Dev Tools during development and using Am I Responsihttps://ui.dev/amiresponsiveve? 
+
 ![Website Responsiveness](/assets/images/Website-responsiveness.png)
 
 

@@ -46,7 +46,7 @@
             </div>
 
             <!-- Instructions Screen -->
-            <div id="instructionsScreen" class="instructions-screen hidden" aria-labelledby="instructions-heading">
+            <div id="instructionsScreen" class="instructions-screen hidden">
                 <div class="instructions-content">
                     <h3 id="instructions-heading">How to Play <span aria-hidden="true">🎮</span></h3>
                     <div class="instructions-list">
@@ -100,7 +100,7 @@
             <div id="game" class="hidden" aria-live="polite">
 
                 <div class="info">
-                    <span aria-label="Time remaining in seconds">
+                    <span>
                         <span aria-hidden="true">⏱</span>
                         <span id="timer">10</span>s
                     </span>
@@ -121,7 +121,7 @@
                     <input type="text" id="answerInput" class="answer-box" placeholder="Your answer" readonly
                         aria-label="Answer input field">
 
-                    <div class="calculator" aria-label="On-screen number keypad">
+                    <div class="calculator">
 
                         <div class="top-row">
                             <button type="button" class="number" onclick="addNumber(7)" aria-label="Number 7">7</button>
@@ -163,13 +163,13 @@
     </section>
 
     <!-- Quiz End Modal -->
-    <div class="modal fade" id="quizEndModal" tabindex="-1" aria-labelledby="quizEndTitle" aria-hidden="true">
+    <div class="modal fade" id="quizEndModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content text-center">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="quizEndTitle">
+                    <h4 class="modal-title" id="quizEndTitle">
                         <span aria-hidden="true">🎉</span> Quiz Completed!
-                    </h5>
+                    </h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close results modal"></button>
                 </div>
